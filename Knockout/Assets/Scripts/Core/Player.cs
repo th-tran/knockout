@@ -56,7 +56,6 @@ public class Player : PhysicsObject
             {
                 velocity.y = jumpTakeOffSpeed;
                 PlayJumpSound();
-                PlayStepSound();
             }
 
             if (move.x > 0.01f)
