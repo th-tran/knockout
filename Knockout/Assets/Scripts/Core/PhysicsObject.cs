@@ -31,7 +31,7 @@ public class PhysicsObject : MonoBehaviour
         contactFilter.useLayerMask = true;
     }
 
-    void Update ()
+    void Update()
     {
         targetVelocity = Vector2.zero;
         ComputeVelocity();
@@ -62,7 +62,8 @@ public class PhysicsObject : MonoBehaviour
         Movement(move, true);
     }
 
-    void Movement(Vector2 move, bool yMovement){
+    void Movement(Vector2 move, bool yMovement)
+    {
         float distance = move.magnitude;
         if (distance > minMoveDistance)
         {
@@ -84,7 +85,7 @@ public class PhysicsObject : MonoBehaviour
             for (int i = 0; i < hitBufferList.Count; i++)
             {
                 Vector2 currentNormal = hitBufferList[i].normal;
-                if(currentNormal.y > minGroundNormalY)
+                if (currentNormal.y > minGroundNormalY)
                 {
                     grounded = true;
                     if (yMovement)

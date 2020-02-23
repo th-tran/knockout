@@ -401,6 +401,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7844249881934099502, guid: fc1b3c4c956b8c84fa70445f49a5295f,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7844249881934099502, guid: fc1b3c4c956b8c84fa70445f49a5295f,
+        type: 3}
+      propertyPath: jumpTakeOffSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7844249881934099502, guid: fc1b3c4c956b8c84fa70445f49a5295f,
+        type: 3}
+      propertyPath: recoveryTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7844249881934099502, guid: fc1b3c4c956b8c84fa70445f49a5295f,
+        type: 3}
+      propertyPath: launchRecovery
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7844249881934099500, guid: fc1b3c4c956b8c84fa70445f49a5295f,
         type: 3}
       propertyPath: m_Mesh

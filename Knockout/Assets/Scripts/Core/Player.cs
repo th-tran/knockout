@@ -32,7 +32,7 @@ public class Player : PhysicsObject
     // Start is called before the first frame update
     void Start()
     {
-
+        origLocalScale = transform.localScale;
     }
 
     protected override void ComputeVelocity()
@@ -68,7 +68,7 @@ public class Player : PhysicsObject
                 }
             }
 
-            if (Input.GetMouseButtonDown (0))
+            if (Input.GetMouseButtonDown(0))
             {
                 animator.SetTrigger("attack");
             }
