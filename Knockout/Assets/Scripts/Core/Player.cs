@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : PhysicsObject
 {
+    public AudioSource audioSource;
+    AnimatorFunctions animatorFunctions;
     Vector3 origLocalScale;
     public bool frozen = false;
     float launch = 1;
@@ -13,6 +15,8 @@ public class Player : PhysicsObject
     public bool recovering;
     public float recoveryCounter;
     public float recoveryTime = 2;
+    public AudioClip stepSound;
+	public AudioClip jumpSound;
     [SerializeField] GameObject graphic;
     [SerializeField] Animator animator;
 
@@ -32,6 +36,8 @@ public class Player : PhysicsObject
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        animatorFunctions = GetComponent<AnimatorFunctions>();
         origLocalScale = transform.localScale;
     }
 
@@ -49,8 +55,8 @@ public class Player : PhysicsObject
             if (Input.GetButtonDown("Jump") && grounded)
             {
                 velocity.y = jumpTakeOffSpeed;
-                //PlayJumpSound();
-                //PlayStepSound();
+                PlayJumpSound();
+                PlayStepSound();
             }
 
             if (move.x > 0.01f)
@@ -92,4 +98,16 @@ public class Player : PhysicsObject
         animator.SetFloat("velocityX", Mathf.Abs (velocity.x) / maxSpeed);
         targetVelocity = move * maxSpeed;
     }
+
+    public void PlayStepSound()
+    {
+		audioSource.pitch = Random.Range(0.6f, 1f);
+		audioSource.PlayOneShot(Player.Instance.stepSound);
+	}
+
+	public void PlayJumpSound()
+    {
+		audioSource.pitch = Random.Range(0.6f, 1f);
+		audioSource.PlayOneShot(Player.Instance.jumpSound);
+	}
 }
