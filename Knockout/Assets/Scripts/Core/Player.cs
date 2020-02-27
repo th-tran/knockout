@@ -9,6 +9,7 @@ public class Player : PhysicsObject
     Vector3 origLocalScale;
     public bool frozen = false;
     float launch = 1;
+    [SerializeField] Vector2 launchPower;
     [SerializeField] float launchRecovery;
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
@@ -16,7 +17,7 @@ public class Player : PhysicsObject
     public float recoveryCounter;
     public float recoveryTime = 2;
     public AudioClip stepSound;
-	public AudioClip jumpSound;
+    public AudioClip jumpSound;
     [SerializeField] GameObject graphic;
     [SerializeField] Animator animator;
 
@@ -100,13 +101,25 @@ public class Player : PhysicsObject
 
     public void PlayStepSound()
     {
-		audioSource.pitch = Random.Range(0.6f, 1f);
-		audioSource.PlayOneShot(Player.Instance.stepSound);
-	}
+        audioSource.pitch = Random.Range(0.6f, 1f);
+        audioSource.PlayOneShot(Player.Instance.stepSound);
+    }
 
-	public void PlayJumpSound()
+    public void PlayJumpSound()
     {
-		audioSource.pitch = Random.Range(0.6f, 1f);
-		audioSource.PlayOneShot(Player.Instance.jumpSound);
-	}
+        audioSource.pitch = Random.Range(0.6f, 1f);
+        audioSource.PlayOneShot(Player.Instance.jumpSound);
+    }
+
+    public void Hit(int launchDirection)
+    {
+        if (!recovering)
+        {
+            animator.SetTrigger("hurt");
+            velocity.y = launchPower.y;
+            launch = launchDirection * (launchPower.x);
+            recoveryCounter = 0;
+            recovering = true;
+        }
+    }
 }

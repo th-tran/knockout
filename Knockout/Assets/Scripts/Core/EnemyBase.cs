@@ -199,4 +199,13 @@ public class EnemyBase : PhysicsObject
         audioSource.pitch = Random.Range(0.6f, 1f);
         audioSource.PlayOneShot(jumpSound);
     }
+
+    public void Hit(int launchDirection)
+    {
+        animator.SetTrigger("hurt");
+        velocity.y = launchPower;
+        launch = launchDirection * (launchPower/5);
+        recoveryCounter = 0;
+        recovering = true;
+    }
 }
